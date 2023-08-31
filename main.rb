@@ -1,7 +1,9 @@
 require './mastermind.rb'
 require './code-breaker.rb'
+require './code-maker.rb'
 
 breaker = HumanCodeBreaker.new
-game = MastermindGame.new breaker, nil
+maker = ComputerCodeMaker.new
+game = MastermindGame.new breaker, maker
 
 game.start

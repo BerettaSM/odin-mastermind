@@ -12,7 +12,7 @@ class MastermindGame
     def start
         until @guesses <= 0
             guess = get_guess
-            
+
             if @maker.is_correct guess
                 @is_correct_guess = true
                 break
@@ -20,7 +20,7 @@ class MastermindGame
 
             hints = @maker.ask_hints guess
 
-            puts hints
+            show_hints hints
 
             @guesses -= 1
         end
@@ -33,6 +33,10 @@ class MastermindGame
     end
 
     private
+
+    def show_hints hints
+        puts "Correct placements: #{hints[:correct_placements]} | Correct numbers: #{hints[:correct_numbers]}"
+    end
 
     def get_guess
         loop do
