@@ -1,6 +1,11 @@
 class CodeMaker
+
     def initialize
         @code = generate_code
+    end
+
+    def code
+        @code.join('').to_s
     end
 
     def is_correct guess
@@ -8,13 +13,9 @@ class CodeMaker
     end
 
     def ask_hints guess
-        correct_placements = get_correct_placements guess, @code
-
-        correct_numbers = get_correct_numbers_quantity guess
-
         {
-            correct_placements: correct_placements.filter { |x| x }.length,
-            correct_numbers: correct_numbers
+            correct_placements: get_correct_placements(guess, @code).filter { |x| x }.length,
+            correct_numbers: get_correct_numbers_quantity(guess)
         }
     end
 

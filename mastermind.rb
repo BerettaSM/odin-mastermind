@@ -25,14 +25,18 @@ class MastermindGame
             @guesses -= 1
         end
 
-        if @is_correct_guess
-            puts "You guessed it right!"
-        else
-            puts "Close, but no cigar..."
-        end
+        show_end_game_message
     end
 
     private
+
+    def show_end_game_message
+        if @is_correct_guess
+            puts "You guessed it right!"
+        else
+            puts "Close, but no cigar. The code was #{@maker.code}"
+        end
+    end
 
     def show_hints hints
         puts "Correct placements: #{hints[:correct_placements]} | Correct numbers: #{hints[:correct_numbers]}"
